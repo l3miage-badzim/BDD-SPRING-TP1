@@ -1,6 +1,6 @@
 package fr.uga.l3miage.tp3.exo1.components;
 
-import fr.uga.l3miage.tp3.exo1.exceptions.technical.NotFoundSongEntityException;
+import fr.uga.l3miage.tp3.exo1.exceptions.technicals.NotFoundSongEntityException;
 import fr.uga.l3miage.tp3.exo1.models.SongEntity;
 import fr.uga.l3miage.tp3.exo1.repositories.SongRepository;
 import lombok.RequiredArgsConstructor;
