@@ -1,4 +1,4 @@
-package fr.uga.l3miage.tp3.exo1.exceptions.handlers;
+package fr.uga.l3miage.tp3.exo1.exceptions.handler;
 
 import fr.uga.l3miage.exo1.errors.AddPlaylistErrorResponse;
 import fr.uga.l3miage.tp3.exo1.exceptions.rest.AddingSongRestException;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @ControllerAdvice
-public class AddingSongRestExceptionHandler {
+public class ExceptionRestHandler {
 
     @ExceptionHandler(AddingSongRestException.class)
     public ResponseEntity<AddPlaylistErrorResponse> handle(HttpServletRequest httpServletRequest, Exception e){
@@ -24,5 +24,6 @@ public class AddingSongRestExceptionHandler {
         log.warn(exception.getMessage());
         return ResponseEntity.badRequest().body(response);
     }
+
 
 }

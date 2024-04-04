@@ -15,4 +15,9 @@ public class PlaylistController implements PlaylistEnpoint {
     public PlaylistResponseDTO getPlaylist(String name) {
         return playlistService.getPlaylist(name);
     }
+
+    @Override
+    public PlaylistResponseDTO addSongInPlaylist(String idPlaylist, String idSong) {
+        return playlistService.addSongInPlaylist(idPlaylist, idSong);
+    }
 }
