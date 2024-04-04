@@ -1,5 +1,6 @@
 package fr.uga.l3miage.exo1.endpoints;
 
+import fr.uga.l3miage.exo1.errors.AddPlaylistErrorResponse;
 import fr.uga.l3miage.exo1.responses.PlaylistResponseDTO;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -23,5 +24,5 @@ public interface PlaylistEnpoint {
     @PatchMapping("/{idPlaylist}")
     @ApiResponse(responseCode = "200", description = "Le son à été trouvé")
     @ResponseStatus(HttpStatus.OK)
-    PlaylistResponseDTO getPlaylist(@PathVariable(name = "idPlaylist")String idPlaylist);    
+    PlaylistResponseDTO getPlaylist(@PathVariable(name = "idPlaylist")String idPlaylist);
 }
