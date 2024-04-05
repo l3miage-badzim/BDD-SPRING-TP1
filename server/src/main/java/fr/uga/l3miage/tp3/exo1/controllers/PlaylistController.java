@@ -1,6 +1,7 @@
 package fr.uga.l3miage.tp3.exo1.controllers;
 
 import fr.uga.l3miage.exo1.endpoints.PlaylistEnpoint;
+import fr.uga.l3miage.exo1.requests.PlaylistCreationRequest;
 import fr.uga.l3miage.exo1.responses.PlaylistResponseDTO;
 import fr.uga.l3miage.tp3.exo1.services.PlaylistService;
 import lombok.RequiredArgsConstructor;
@@ -19,5 +20,10 @@ public class PlaylistController implements PlaylistEnpoint {
     @Override
     public PlaylistResponseDTO addSongInPlaylist(String idPlaylist, String idSong) {
         return playlistService.addSongInPlaylist(idPlaylist, idSong);
+    }
+
+    @Override
+    public PlaylistResponseDTO createPlaylist(PlaylistCreationRequest playlistCreationRequest) {
+        return playlistService.createPlaylist(playlistCreationRequest);
     }
 }

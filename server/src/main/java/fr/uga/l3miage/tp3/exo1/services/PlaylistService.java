@@ -1,9 +1,11 @@
 package fr.uga.l3miage.tp3.exo1.services;
 
+import fr.uga.l3miage.exo1.requests.PlaylistCreationRequest;
 import fr.uga.l3miage.exo1.responses.PlaylistResponseDTO;
 import fr.uga.l3miage.tp3.exo1.components.PlaylistComponent;
 import fr.uga.l3miage.tp3.exo1.components.SongComponent;
 import fr.uga.l3miage.tp3.exo1.exceptions.rest.AddingSongRestException;
+import fr.uga.l3miage.tp3.exo1.exceptions.rest.BadRequestRestException;
 import fr.uga.l3miage.tp3.exo1.exceptions.rest.NotFoundEntityRestException;
 import fr.uga.l3miage.tp3.exo1.exceptions.technical.NotFoundPlaylistEntityException;
 import fr.uga.l3miage.tp3.exo1.exceptions.technical.NotFoundSongEntityException;
@@ -36,6 +38,16 @@ public class PlaylistService {
         }
         catch (NotFoundPlaylistEntityException e) {
             throw new NotFoundEntityRestException(e.getMessage());
+        }
+    }
+
+    public PlaylistResponseDTO createPlaylist(PlaylistCreationRequest playlistCreationRequest) {
+        try {
+            PlaylistEntity playlistEntity = playlistMapper.toEntity(playlistCreationRequest);
+            playlistEntity.setSongEntities(songComponent.getSetSongEntity(playlistCreationRequest.getSongsIds()));
+            return playlistMapper.toResponse(playlistComponent.createPlaylistEntity(playlistEntity));
+        } catch (Exception e) {
+            throw new BadRequestRestException(e.getMessage());
         }
     }
 

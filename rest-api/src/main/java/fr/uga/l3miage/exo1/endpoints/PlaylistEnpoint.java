@@ -1,6 +1,7 @@
 package fr.uga.l3miage.exo1.endpoints;
 
 import fr.uga.l3miage.exo1.errors.AddPlaylistErrorResponse;
+import fr.uga.l3miage.exo1.requests.PlaylistCreationRequest;
 import fr.uga.l3miage.exo1.responses.PlaylistResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -24,8 +25,15 @@ public interface PlaylistEnpoint {
     PlaylistResponseDTO addSongInPlaylist(@PathVariable(name = "idPlaylist")String idPlaylist, @RequestParam String idSong);
 
     @Operation(description = "Récuperer une playlist")
-    @PatchMapping("/{idPlaylist}")
+    @GetMapping("/{idPlaylist}")
     @ApiResponse(responseCode = "200", description = "Le son à été trouvé")
     @ResponseStatus(HttpStatus.OK)
     PlaylistResponseDTO getPlaylist(@PathVariable(name = "idPlaylist")String idPlaylist);
+
+    @Operation(description = "Création d'une playlist")
+    @ApiResponse(responseCode = "201",description = "La Playlist à bien été créé")
+    @ApiResponse(responseCode = "400",description = "La Playlist n'à pas bien été créé")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/create")
+    PlaylistResponseDTO createPlaylist(@RequestBody PlaylistCreationRequest playlistCreationRequest);
 }
